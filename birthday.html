@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>MAHI "MY EVERYTHING" NAZ.</title>
+<style>
+  :root{--accent:#ff6b6b;--bg:#0f1724;--card:#0b1220;--glass:rgba(255,255,255,0.06)}
+  html,body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neue',Arial;font-size:14px;overflow-x:hidden;scroll-behavior:smooth}
+  body{background:linear-gradient(180deg,#071627 0%, #081726 40%, #0a1530 100%);color:#e6eef8;padding:10px;position:relative;}
+  .container{max-width:800px;margin:auto;position:relative;z-index:2}
+  header{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;flex-wrap:wrap;gap:6px}
+  .logo{display:flex;align-items:center;gap:8px}
+  .logo .mark{width:40px;height:40px;border-radius:8px;background:linear-gradient(135deg,var(--accent),#f9a8a8);display:flex;align-items:center;justify-content:center;font-weight:700;color:#0b1220;font-size:16px}
+  h1{font-size:22px;margin:0}
+  p.lead{opacity:0.9;margin:3px 0 0;font-size:12px}
+  .card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:12px;border-radius:10px;box-shadow:0 4px 20px rgba(2,6,23,0.6);margin-bottom:12px}
+  .hero{text-align:center}
+  .hero h2{font-size:24px;margin:4px 0}
+  .countdown{display:flex;gap:6px;margin-top:8px;flex-wrap:wrap;justify-content:center}
+  .countdown .unit{background:var(--card);padding:6px 8px;border-radius:6px;min-width:50px;text-align:center;font-size:12px}
+  .cake{font-size:60px;margin-top:12px;animation:bounce 1s infinite alternate;cursor:pointer}
+  @keyframes bounce{to{transform:translateY(-8px)}}
+  .message-section{margin-top:15px;text-align:center;font-size:15px;line-height:1.4}
+  .gallery{display:flex;gap:4px;flex-wrap:wrap;margin-top:14px;justify-content:center}
+  .gallery img{width:calc(33% - 3px);border-radius:6px;cursor:pointer;object-fit:cover;height:100px}
+  footer{margin-top:12px;text-align:center;opacity:0.8;font-size:11px}
+  canvas#effectsCanvas{position:fixed;top:0;left:0;width:100%;height:100%;z-index:1;pointer-events:none}
+  /* Messages */
+  .msg-box textarea{width:100%;height:80px;border-radius:6px;padding:8px;border:1px solid rgba(255,255,255,0.2);background:transparent;color:inherit;font-size:13px}
+  .msg-list{max-height:200px;overflow:auto;margin-top:8px}
+  .msg{padding:6px;background:var(--glass);border-radius:6px;margin-bottom:6px;font-size:13px}
+  @media(max-width:600px){
+    h1{font-size:18px}
+    .hero h2{font-size:20px}
+    .countdown .unit{min-width:40px;padding:4px 6px;font-size:11px}
+    .cake{font-size:48px}
+    .gallery img{width:calc(50% - 3px);height:140px}
+  }
+</style>
+</head>
+<body>
+<canvas id="effectsCanvas"></canvas>
+
+<div class="container">
+  <header>
+    <div class="logo">
+      <div class="mark">❤</div>
+      <div>
+        <h1>A Special Birthday Meri Jaan</h1>
+        <p class="lead">To my everything, for my everything, forever for my baby, mwah <3</p>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="card hero">
+      <h2>Mere liye itna sab hain aap, aap ko kese bataun main?</h2>
+      <p>Bohot toh nahi hai lekin i hope that i make your day and life a little better baby <3.</p>
+      <div class="countdown">
+        <div class="unit"><div id="days">--</div><small>Days</small></div>
+        <div class="unit"><div id="hours">--</div><small>Hours</small></div>
+        <div class="unit"><div id="mins">--</div><small>Minutes</small></div>
+        <div class="unit"><div id="secs">--</div><small>Seconds</small></div>
+      </div>
+      <div class="cake" id="cake">🎂</div>
+    </div>
+
+    <div class="card message-section">
+      💌 I love you so much meri jaan❤, on this day you came to earth for me, just to tell me how much love i can get in this world and there is nothing more that i want from you my beautiful baby 😘. I'm really blessed to have you in my life and i don't know what i would be doing without you, i need you to celebrate your birthday and keep smiling mere chand, you're the prettiest girl in the whole universe! ❤😘 I'm sorry that I couldn't get you a gift but i got you a full website that is just for you meri mahi, i love you a lot and trust me mujhe aapse bohot mohabbat hai mere chand, I LOVE YOU MWAHHHH ❤🌎
+    </div>
+
+    <div class="card gallery">
+      <img src="https://images.unsplash.com/photo-1502685104226-ee32379fefbe?auto=format&fit=crop&w=800&q=60" alt="photo1">
+      <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=800&q=60" alt="photo2">
+      <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?auto=format&fit=crop&w=800&q=60" alt="photo3">
+    </div>
+
+    <div class="card msg-box">
+      <h3>Jo likhna hai, jo bolna hai, dil khol ke bolein jaanu! 🎉</h3>
+      <textarea id="msgInput" placeholder="Write your wish here..."></textarea>
+      <div style="margin-top:6px;display:flex;gap:6px">
+        <button id="saveMsg" class="btn" style="padding:6px 10px;background:var(--accent);border:none;border-radius:4px;cursor:pointer;color:#0b1220">Save</button>
+        <button id="clearMsg" class="btn" style="padding:6px 10px;background:transparent;border:1px solid rgba(255,255,255,0.3);border-radius:4px;cursor:pointer;color:#fff">Clear All</button>
+      </div>
+      <div class="msg-list" id="msgList"></div>
+    </div>
+
+    <footer>
+      Made with ♥ by your one and only!
+    </footer>
+  </main>
+</div>
+
+<audio id="bgMusic" autoplay loop src="https://docs.google.com/uc?export=download&id=1uloFuig5o8_su_wVPuyvWatqX5MRop0i"></audio>
+
+<script>
+// Countdown
+const birthdayDate = '2025-08-14T00:00:00';
+function updateCountdown(){
+  const now = new Date();
+  const then = new Date(birthdayDate);
+  let diff = Math.max(0, then - now);
+  const days = Math.floor(diff / (1000*60*60*24));
+  diff -= days * (1000*60*60*24);
+  const hours = Math.floor(diff / (1000*60*60));
+  diff -= hours * (1000*60*60);
+  const mins = Math.floor(diff / (1000*60));
+  diff -= mins * (1000*60);
+  const secs = Math.floor(diff / 1000);
+  document.getElementById('days').textContent = days;
+  document.getElementById('hours').textContent = hours;
+  document.getElementById('mins').textContent = mins;
+  document.getElementById('secs').textContent = secs;
+}
+setInterval(updateCountdown, 1000);updateCountdown();
+
+// Cake click effect (hearts)
+document.getElementById('cake').addEventListener('click',()=>{
+  for(let i=0;i<20;i++){
+    let heart=document.createElement('div');
+    heart.textContent='💖';
+    heart.style.position='fixed';
+    heart.style.left=Math.random()*100+'vw';
+    heart.style.top='100vh';
+    heart.style.fontSize='24px';
+    heart.style.animation=`rise 3s ease forwards`;
+    document.body.appendChild(heart);
+    setTimeout(()=>heart.remove(),3000);
+  }
+});
+const style=document.createElement('style');
+style.textContent=`@keyframes rise{to{transform:translateY(-110vh);opacity:0}}`;document.head.appendChild(style);
+
+// Messages (localStorage)
+const LIST_KEY='birthday_messages_v1';
+function loadMsgs(){
+  const arr=JSON.parse(localStorage.getItem(LIST_KEY)||'[]');
+  const list=document.getElementById('msgList');
+  list.innerHTML='';
+  arr.reverse().forEach(m=>{
+    const div=document.createElement('div');
+    div.className='msg';
+    div.innerHTML=`${m}`;
+    list.appendChild(div);
+  });
+}
+document.getElementById('saveMsg').addEventListener('click',()=>{
+  const text=document.getElementById('msgInput').value.trim();
+  if(!text)return alert('Write something first!');
+  const arr=JSON.parse(localStorage.getItem(LIST_KEY)||'[]');
+  arr.push(text);
+  localStorage.setItem(LIST_KEY,JSON.stringify(arr));
+  document.getElementById('msgInput').value='';
+  loadMsgs();
+});
+document.getElementById('clearMsg').addEventListener('click',()=>{
+  if(confirm('Clear all messages?')){
+    localStorage.removeItem(LIST_KEY);
+    loadMsgs();
+  }
+});
+loadMsgs();
+
+// Balloons & confetti
+const canvas=document.getElementById('effectsCanvas');
+const ctx=canvas.getContext('2d');
+let W,H;
+function resize(){W=canvas.width=window.innerWidth;H=canvas.height=window.innerHeight;}
+window.addEventListener('resize',resize);resize();
+let balloons=Array.from({length:12},()=>({x:Math.random()*W,y:H+Math.random()*H,r:20+Math.random()*10,color:`hsl(${Math.random()*360},70%,60%)`,speed:0.5+Math.random()*1}));
+let confetti=Array.from({length:60},()=>({x:Math.random()*W,y:Math.random()*H,w:4,h:8,color:`hsl(${Math.random()*360},70%,60%)`,speed:1+Math.random()*2}));
+function draw(){
+  ctx.clearRect(0,0,W,H);
+  balloons.forEach(b=>{
+    ctx.beginPath();
+    ctx.fillStyle=b.color;
+    ctx.ellipse(b.x,b.y,b.r*0.8,b.r,0,0,Math.PI*2);
+    ctx.fill();
+    b.y-=b.speed;if(b.y<-b.r)b.y=H+b.r;
+  });
+  confetti.forEach(c=>{
+    ctx.fillStyle=c.color;
+    ctx.fillRect(c.x,c.y,c.w,c.h);
+    c.y+=c.speed;if(c.y>H)c.y=-c.h;
+  });
+  requestAnimationFrame(draw);
+}
+draw();
+</script>
+</body>
+</html>
